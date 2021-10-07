@@ -127,3 +127,12 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VS Code
+.vscode
+
+# VS Code - Container - Remote
+.devcontainer
+
+# image files
+test_images/

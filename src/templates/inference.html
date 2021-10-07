@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <p class="lead">File uploaded successfully. You have uploaded image(s) of</p>
+</div>
+<div class='container'>
+    <div class='row'>
+
+
+        {% for d in current_img %}
+        <div class='col-sm thumb text-center'>
+
+            <img class="img-thumbnail" src="{{d['img_data']}}" alt={{name}} width='250' , height='250'>
+            <p class="display-8"><b>{{d['name']}}!</b></p>
+            <p class="mt-9">Confidence: <strong>{{d['confidence']}}%</strong></p>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <p class="lead">Previously Uploaded Images (max 5)</p>
+</div>
+
+<div class='container'>
+    <div class='row'>
+
+
+        {% for d in past_img %}
+        <div class='col-sm thumb text-center'>
+
+            <img class="img-thumbnail" src="{{d['img_data']}}" alt={{name}} width='250' , height='250'>
+            <p class="display-8"><b>{{d['name']}}</b></p>
+            <p class="mt-9">Confidence: <strong>{{d['confidence']}}%</strong></p>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+<div class='text-center'>
+    <p class="mt-5"> <a href="/">Try again</a></p>
+</div>
+{% endblock %}
