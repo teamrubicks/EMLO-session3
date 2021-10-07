@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="px-3 py-3 text-center">
+            <h1 class="display-4">About this project</h1>
+            <div class="my-2">
+                <img style="max-width: 600px; width: 100%;" src="{{ url_for('static', filename='img/flask+pytorch.png') }}" alt="">
+            </div>
+            <p class="lead">This project is based on the following repo: <br> <a
+                    href="https://github.com/imadtoubal/Pytorch-Flask-Docker-App"> View on GitHub</a></p>
+           
+            
+
+        </div>
+    </div>
+</div>
+<p>
+    Team Members of this EMLO Group
+</p>
+<ul>
+    <li>Chaityana</li>
+    <li>Abhijit</li>
+    <li>Anurag</li>
+    <li>Vikash</li>
+  </ul> 
+{% endblock %}
