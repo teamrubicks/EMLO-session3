@@ -12,21 +12,23 @@
 </div>
 <div class="row">
   <div class="mb-2 col-md-6 offset-md-3">
-    <form action="/infer" method="POST" enctype="multipart/form-data">
-      <div class="input-group">
-        <div class="custom-file">
-          <input type="file" name="file" accept=".jpg, .jpeg, .png" class="custom-file-input" id="inputGroupFile"
-            aria-describedby="inputGroupFileAddon04">
-          <label class="custom-file-label" for="inputGroupFile">Choose file</label>
-          
-        </div>
+
+  <form action="/infer" method="POST" enctype="multipart/form-data">
+    
+    <div class="input-group">
+      <div class="custom-file">
         
+        <form action="/action_page.php">
+          <label for="files">Select files:</label>
+          <input type="file" id="files" name="files[]" multiple accept=".jpg, .jpeg, .png" ><br><br>
+          <input type="submit">
       </div>
-    </form>
-    <form method="POST" enctype="multipart/form-data" action="/upload">
-      <input type="file" name="file[]" multiple="">
-      <input type="submit" value="add">
-    </form>
+      <div class="input-group-append">
+        <input type="submit" value="Upload"  class="btn btn-outline-secondary" type="button"
+          id="inputGroupFileAddon04" /> 
+      </div>
+    </div>
+  </form>
   </div>
   <div class="row">
     <div class="col-sm-6 offset-sm-3 my-5">

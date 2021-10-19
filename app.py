@@ -9,6 +9,16 @@ app.config['UPLOAD_FOLDER'] = 'uploads'
 
 model = MobileNet()
 
+
+def predict_model(f):
+    saveLocation = f.filename
+    f.save('static/img/'+saveLocation)
+    inference, confidence = model.infer('static/img/'+saveLocation)
+    # make a percentage with 2 decimal points
+    confidence = floor(confidence * 10000) / 100
+    # delete file after making an inference
+    # os.remove(saveLocation)
+    return inference,confidence
  
 @app.route('/')
 def index():
@@ -23,16 +33,15 @@ def about():
 @app.route('/infer', methods=['POST'])
 def success():
     if request.method == 'POST':
-        f = request.files['file']
-        saveLocation = f.filename
-        f.save(saveLocation)
-        inference, confidence = model.infer(saveLocation)
-        # make a percentage with 2 decimal points
-        confidence = floor(confidence * 10000) / 100
-        # delete file after making an inference
-        os.remove(saveLocation)
+        uploaded_files = request.files.getlist("files[]")
+        inferences=[]
+        confidences=[]
+        for i in uploaded_files:
+            infer,conf = predict_model(i) 
+            inferences.append(infer)
+            confidences.append(str(conf))
         # respond with the inference
-        return render_template('inference.html', name=inference, confidence=confidence)
+        return render_template('inference.html', name=inferences, confidence=confidences,images=uploaded_files,count=len(inferences))
 
 
 if __name__ == '__main__':
