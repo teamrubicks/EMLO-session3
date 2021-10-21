@@ -1,4 +1,6 @@
--f https://download.pytorch.org/whl/torch_stable.html
+--find-links https://download.pytorch.org/whl/torch_stable.html
+torch==1.8.1+cpu
+torchvision==0.9.1+cpu
 numpy
 Click>=7.1.2
 Flask>=1.1.2
@@ -7,5 +9,3 @@ Jinja2>=2.11.2
 MarkupSafe==1.1.1
 Werkzeug==1.0.1
 gunicorn>=20.0.4
-torch==1.6.0+cpu
-torchvision==0.7.0+cpu
